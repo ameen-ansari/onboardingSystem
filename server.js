@@ -7,6 +7,7 @@ const hrUserSchema = require("./src/models/hrUser");
 const qaUserSchema = require("./src/models/qaUser");
 const deviceSchema = require("./src/models/device");
 const machineSchema = require("./src/models/machine");
+const training = require("./src/models/tranings");
 const port = 1000
 
 app.use(cors());
@@ -60,6 +61,21 @@ app.post('/auth/check', (req, res) => {
             message: 'user not found'
         })
     }
+})
+
+app.post('/app/add/trainentries', async (req, res) => {
+    // try {
+    let userTraining = new training(req.body)
+    await userTraining.save()
+    res.send({
+        message: 'ok'
+    })
+    // } catch (error) {
+    // res.send({
+    //     message: 'something went wrong',
+    //     error: error
+    // })
+    // }
 })
 
 app.post('/app/add/hrdata', async (req, res) => {
@@ -140,7 +156,7 @@ app.get('/app/pendingemployee', async (req, res) => {
 })
 
 app.post('/app/deleteemployee', async (req, res) => {
-    await qaUserSchema.deleteOne({ _id: req.body.id})
+    await qaUserSchema.deleteOne({ _id: req.body.id })
 })
 
 
