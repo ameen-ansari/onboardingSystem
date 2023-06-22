@@ -2,7 +2,7 @@ const express = require("express");
 const { dbConnector } = require("./src/config/configDb");
 const app = express()
 require('dotenv').config()
-// const cors = require('cors');
+const cors = require('cors');
 const hrUserSchema = require("./src/models/hrUser");
 const qaUserSchema = require("./src/models/qaUser");
 const deviceSchema = require("./src/models/device");
@@ -10,7 +10,7 @@ const machineSchema = require("./src/models/machine");
 const training = require("./src/models/tranings");
 const port = 1000
 
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
