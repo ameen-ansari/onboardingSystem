@@ -9,15 +9,12 @@ const deviceSchema = require("./src/models/device");
 const machineSchema = require("./src/models/machine");
 const training = require("./src/models/tranings");
 const port = 1000
-app.use(cors({origin:'*'}))
+app.use(cors({ origin: '*' }))
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    res.send('welcome');
-})
 
 
 
@@ -72,6 +69,19 @@ app.post('/app/add/trainentries', async (req, res) => {
         message: 'ok'
     })
 })
+app.get('/', (req, res) => {
+    let db_info = dbConnector()
+    console.log({
+        db_connected: db_info,
+        message: 'hello'
+    });
+    res.send({
+        db_connected: db_info,
+        message: 'hello'
+    });
+
+})
+
 
 app.post('/app/add/hrdata', async (req, res) => {
     try {
