@@ -9,6 +9,7 @@ const deviceSchema = require("./src/models/device");
 const machineSchema = require("./src/models/machine");
 const training = require("./src/models/tranings");
 const port = 1000
+app.use(cors({origin:'*'}))
 
 app.use(cors());
 app.use(express.json());
