@@ -60,6 +60,7 @@ app.post('/auth/check', (req, res) => {
         })
     }
 })
+dbConnector()
 
 app.post('/app/add/trainentries', async (req, res) => {
     // try {
@@ -70,13 +71,11 @@ app.post('/app/add/trainentries', async (req, res) => {
     })
 })
 app.get('/', (req, res) => {
-    let db_info = dbConnector()
+
     console.log({
-        db_connected: db_info,
         message: 'hello'
     });
     res.send({
-        db_connected: db_info,
         message: 'hello'
     });
 
