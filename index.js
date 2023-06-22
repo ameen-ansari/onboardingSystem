@@ -9,15 +9,14 @@ const deviceSchema = require("./src/models/device");
 const machineSchema = require("./src/models/machine");
 const training = require("./src/models/tranings");
 const port = 1000
-app.use(cors({ origin: '*' }))
+app.use(cors({origin:'*'}))
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', async (req, res) => {
-    let employess = await hrUserSchema.find()
-    res.send(employess)
+app.get('/', (req, res) => {
+    res.send('welcome');
 })
 
 
