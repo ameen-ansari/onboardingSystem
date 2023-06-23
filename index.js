@@ -163,6 +163,11 @@ app.post('/app/deleteemployee', async (req, res) => {
     await qaUserSchema.deleteOne({ _id: req.body.id })
 })
 
+app.get('/app/trainings', async (req, res) => {
+    let employess = await training.find()
+    res.send(employess)
+})
+
 
 app.listen(port, () => {
     console.log(`server running on port ${port} sucessfully...`);
